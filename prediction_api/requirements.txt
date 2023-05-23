@@ -1,0 +1,7 @@
+alembic
+FastAPI
+numpy
+pandas
+psycopg2
+SQLAlchemy
+uvicorn
