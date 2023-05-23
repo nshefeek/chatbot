@@ -2,8 +2,8 @@ from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 from starlette.requests import Request
 
-from prediction_api.api import router
-from prediction_api import config
+from api import router
+import config
 
 app = FastAPI(title=config.PROJECT_NAME, openapi_url="/api/v1/openapi.json")
 

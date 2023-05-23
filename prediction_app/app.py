@@ -3,7 +3,7 @@ import requests
 import streamlit as st
 from streamlit_tags import st_tags
 
-from prediction_app.choices import processed_choices
+from choices import processed_choices
 
 # Define the title
 st.title("Disease Prediction Model")
@@ -26,19 +26,19 @@ symptom2 = st.selectbox(
 
 # Input 3
 symptom3 = st.selectbox(
-    "Other symptom",
+    "Other symptom 3",
     processed_choices
 )
 
 # Input 4
 symptom4 = st.selectbox(
-    "Other symptom",
+    "Other symptom 4",
     processed_choices
 )
 
 # Input 5
 symptom5 = st.selectbox(
-    "Other symptom",
+    "Other symptom 5",
     processed_choices
 )
 
@@ -60,7 +60,7 @@ if st.button("Submit"):
         }
        
     # Posting inputs to ML API
-    response = requests.post(f"http://host.docker.internal:8001/api/v1/predict/", json=inputs, verify=False)
+    response = requests.post(f"http://prediction_api:8001/api/v1/predict/", json=inputs, verify=False)
     json_response = response.json()
 
     prediction = json_response.get("predictions")

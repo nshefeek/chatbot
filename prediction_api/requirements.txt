@@ -3,5 +3,6 @@ FastAPI
 numpy
 pandas
 psycopg2
+python-dotenv
 SQLAlchemy
 uvicorn

@@ -1,7 +1,7 @@
 import pickle
 import json
 
-from typing import List, Any
+from typing import List, Any, Dict
 
 from fastapi import APIRouter, Request
 from fastapi.responses import HTMLResponse
@@ -26,10 +26,11 @@ def index(request: Request) -> Any:
     return HTMLResponse(content=body)
 
 
-@router.post("/predict", response_model=List[str])
-def predict(symptoms: List[str]):
+@router.post("/predict", response_model=Dict[str, str])
+def predict(symptoms: Dict[str, str]):
     """
     """
+    print(symptoms)
     model = pickle.load(open('svc_ml_model.sav'))
     predictions = model.predict(symptoms)
     return json.dumps(predictions)
