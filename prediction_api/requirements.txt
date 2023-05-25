@@ -4,5 +4,6 @@ numpy
 pandas
 psycopg2
 python-dotenv
+scikit-learn
 SQLAlchemy
 uvicorn

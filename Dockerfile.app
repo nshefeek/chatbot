@@ -1,5 +1,7 @@
 FROM python:3.9.4
 
+ENV PYTHONUNBUFFERED=1
+
 WORKDIR /opt/prediction_app
 
 ADD ./prediction_app /opt/prediction_app

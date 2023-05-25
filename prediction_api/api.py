@@ -27,10 +27,10 @@ def index(request: Request) -> Any:
 
 
 @router.post("/predict", response_model=Dict[str, str])
-def predict(symptoms: Dict[str, str]):
+def predict(symptoms):
     """
     """
-    print(symptoms)
-    model = pickle.load(open('svc_ml_model.sav'))
+    # print(symptoms)
+    model = pickle.load(open('ml_model.sav', 'rb'))
     predictions = model.predict(symptoms)
     return json.dumps(predictions)

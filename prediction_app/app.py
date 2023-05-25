@@ -1,9 +1,13 @@
 import requests
+from logging import getLogger
 
 import streamlit as st
 from streamlit_tags import st_tags
 
 from choices import processed_choices
+
+
+log = getLogger("logger")
 
 # Define the title
 st.title("Disease Prediction Model")
@@ -13,8 +17,8 @@ st.write(
 )
 
 # Input 1
-symptom1 = st.selectbox(
-    "Primary Symptom",
+symptom1 = st.text_input(
+    "Enter",
     processed_choices
 )
 
@@ -47,20 +51,18 @@ symptom5 = st.selectbox(
 if st.button("Submit"):
 
     # Inputs to ML model
-    inputs = {
-        "inputs": [
-            {
-                "symptom1": symptom1,
-                "symptom2": symptom2,
-                "symptom3": symptom3,
-                "symptom4": symptom4,
-                "symptom5": symptom5,
-            }
+    inputs =[
+            symptom1,
+            symptom2,
+            symptom3,
+            symptom4,
+            symptom5,
         ]
-        }
-       
+    print(inputs)
     # Posting inputs to ML API
     response = requests.post(f"http://prediction_api:8001/api/v1/predict/", json=inputs, verify=False)
     json_response = response.json()
 
     prediction = json_response.get("predictions")
+
+    st.subheader(f"**{prediction}!**")
